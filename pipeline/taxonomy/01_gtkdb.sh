@@ -10,6 +10,5 @@ if [ ! -f 214 ]; then
 	ln -s /bigdata/operations/pkgadmin/srv/projects/db/gtdbtk/214
 fi
 IN=input
-mkdir -p tmp
 GTDBTK_DATA_PATH=214 gtdbtk classify_wf --genome_dir $IN --out_dir gtdbtk -x fasta --prefix gtdbtk --cpus $CPUS \
-	--pplacer_cpus 8  --tmpdir ./tmp --mash_db mashdb.msh
+	--pplacer_cpus 8  --tmpdir $SCRATCH --mash_db $SCRATCH/mashdb.msh

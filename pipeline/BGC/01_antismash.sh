@@ -1,5 +1,5 @@
 #!/usr/bin/bash -l
-#SBATCH -p short -c 8 -N 1 -n 1 --mem 16gb  --out logs/antismash.%a.log
+#SBATCH -p short -c 8 -N 1 -n 1 --mem 16gb  --out logs/antismash.%a.log -a 1-1003
 CPU=2
 if [ $SLURM_CPUS_ON_NODE ]; then
   CPU=$SLURM_CPUS_ON_NODE

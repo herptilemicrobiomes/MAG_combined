@@ -1,5 +1,5 @@
 #!/usr/bin/bash -l
-#SBATCH -p short -c 1 --mem 1gb -N 1 -n 1 --out logs/prodigal.%A.log -a 1-948
+#SBATCH -p short -c 1 --mem 1gb -N 1 -n 1 --out logs/prodigal.%A.log -a 1-1003
 
 #948 is number of bins, update to total number when adding more seqs to the folder
 

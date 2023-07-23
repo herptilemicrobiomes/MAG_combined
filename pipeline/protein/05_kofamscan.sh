@@ -33,7 +33,11 @@ fi
 INFILE=$(ls $PROTEINS/*.${EXT} | sed -n ${IN}p)
 OUT=$DOMAINS/kofam/$(basename ${INFILE} .${EXT}).kofam.tsv
 OUTRICH=$DOMAINS/kofam/$(basename ${INFILE} .${EXT}).kofam.txt
+KOLIST=$KOFAM_DB/ko_list
+PROFILES=$KOFAM_DB/profiles/prokaryote.hal
+# will update to specify profile folder and ko_list file
 if [ ! -s $OUT ]; then
-	exec_annotation -o $OUT --cpu $CPUS -f mapper -E 0.0001 -k $KOFAM_DB/ko_list $INFILE
-	exec_annotation -o $OUTRICH --cpu $CPUS -f detail -E 0.0001 -k $KOFAM_DB/ko_list $INFILE 
+	time exec_annotation -o $OUT --cpu $CPUS -f mapper -E 0.0001 -k $KOLIST --profile=$PROFILES $INFILE
+	time exec_annotation -o $OUTRICH --cpu $CPUS -f detail -E 0.0001 -k $KOLIST --profile=$PROFILES $INFILE 
+
 fi

@@ -28,6 +28,10 @@ popd
 mkdir -p UHM51.10868
 pushd UHM51.10868
 ln -s $(realpath ../../../Pilot_2022_10/results/UHM51.10868/bins/)/*.fa .
+for b in $(ls *.fa)
+do
+        mv $b ${b}sta # rename so these are all .fasta named
+done
 popd
 popd
 
