@@ -4,8 +4,8 @@
 #SBATCH --output=logs/domains.kofamscan.%a.log
 
 EXT=aa
-PROTEINS=annotation
-DOMAINS=domains
+PROTEINS=$(realpath annotation)
+DOMAINS=$(realpath domains)
 
 mkdir -p $DOMAINS/kofam
 module load kofamscan
@@ -37,7 +37,7 @@ KOLIST=$KOFAM_DB/ko_list
 PROFILES=$KOFAM_DB/profiles/prokaryote.hal
 # will update to specify profile folder and ko_list file
 if [ ! -s $OUT ]; then
+	pushd $SCRATCH
 	time exec_annotation -o $OUT --cpu $CPUS -f mapper -E 0.0001 -k $KOLIST --profile=$PROFILES $INFILE
 	time exec_annotation -o $OUTRICH --cpu $CPUS -f detail -E 0.0001 -k $KOLIST --profile=$PROFILES $INFILE 
-
 fi
