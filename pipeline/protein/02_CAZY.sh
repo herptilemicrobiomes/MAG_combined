@@ -47,7 +47,8 @@ if [ ! -s ${OUT}.tsv ]; then
     bash $CAZY_FOLDER/hmmscan-parser.sh ${OUT}.domtbl | sort > ${OUT}.tsv
     module unload hmmer
 fi
-
+echo "skipping the hotpep runs as this is pretty slow and maybe unnecessary for simple profiles"
+exit
 if [[ ! -d $OUT.run_dbcan || ! -f $OUT.run_dbcan/overview.txt ]]; then
     module load run_dbcan    
     module load hmmer/3
