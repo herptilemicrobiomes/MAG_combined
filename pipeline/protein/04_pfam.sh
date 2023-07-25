@@ -41,7 +41,9 @@ fi
 INFILE=$(ls $PROTEINS/*.${EXT} | sed -n ${IN}p)
 OUT=$DOMAINS/Pfam/$(basename ${INFILE} .${EXT})
 
-if [ ! -f ${OUT}.hmmscan ]; then
+if [ ! -f ${OUT}.hmmscan.gz ]; then
  srun hmmsearch --mpi --cut_ga --domtbl ${OUT}.domtbl -o ${OUT}.hmmscan $PFAM_DB/Pfam-A.hmm $INFILE
  #hmmscan --cut_ga --cpu $CPUS --domtbl ${OUT}.domtbl -o ${OUT}.hmmscan $PFAM_DB/Pfam-A.hmm $INFILE
+ pigz ${OUT}.hmmscan
+ 
 fi
