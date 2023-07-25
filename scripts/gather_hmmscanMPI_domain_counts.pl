@@ -47,7 +47,8 @@ for my $file ( readdir($ind) ) {
     next unless $file =~ /(\S+)\Q$ext\E$/;
     my $stem = $1;
     $stem =~ s/(sp|var)\./$1\_/; # get rid of sp/var 
-    my ($species) = split(/\./,$stem);
+    my $species = $stem;
+    #my ($species) = split(/\./,$stem);
     warn("species=$species\n") if $verbose;
     my $filepath = File::Spec->catfile($indir,$file);
     open(my $in => $filepath ) || die "cannot open $filepath: $!";
