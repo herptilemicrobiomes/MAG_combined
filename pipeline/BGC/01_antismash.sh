@@ -23,5 +23,6 @@ mkdir -p $OUT/$BASE
 #time antismash --genefinding-tool prodigal --output-dir $OUT/$BASE --taxon bacteria --fullhmmer --clusterhmmer --tigrfam \
 #	--cc-mibig --cb-general --cb-subclusters --cb-knownclusters --pfam2go --cpus $CPU $GENOME 
 echo $BASE
-time antismash --genefinding-tool prodigal --output-dir $OUT/$BASE --taxon bacteria --cpus $CPU $GENOME 
-
+time antismash --genefinding-tool prodigal --output-dir $OUT/$BASE --taxon bacteria --cpus $CPU \
+	--cc-mibig --cb-general --cb-subclusters --cb-knownclusters --clusterhmmer --tigrfam \
+	$GENOME 
